@@ -16,6 +16,7 @@ Documents:
     Image
     PageNumber
     BoxID
+    Sender
     Category
     Notes
 

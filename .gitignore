@@ -1,6 +1,8 @@
-/secrets/
+#hide secrets
+*secrets/
 
-
+#hide database files
+*.db
 
 
 
