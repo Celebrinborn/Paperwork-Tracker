@@ -2,7 +2,7 @@ create table if not exists Documents
 (
     ID INTEGER PRIMARY KEY AUTOINCREMENT
     , DateUploaded INTEGER -- POSIX timestamp use datetime.fromtimestamp(timestamp, tz='America/Los_Angeles')
-    , Image BLOB
+    , Image varchar(512) -- filepath to image
     , PageNumber INTEGER
     , BoxID INTEGER
     , Sender varchar(512)
