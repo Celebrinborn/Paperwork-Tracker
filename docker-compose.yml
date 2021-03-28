@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    reddit_bot:
+        build: ./frontend
+        volumes: 
+            - E:/paperwork_tracker/data:/code/data
+            - E:/paperwork_tracker/logs:/code/logs
+        environment:
+            - test=blah
+        restart: unless-stopped
+secrets:
+    example:
+        file: ./secrets/example
+    
