@@ -8,19 +8,26 @@ import logging
 import sqlite3
 from .Functions import *
 
-def Query(query, params=[]):
+def Query(query, params=[], returnID = False):
     try:
         logging.info('connecting to db')
         con = sqlite3.connect(os.path.join('data', 'database.db'))
         curser = con.cursor()
         rows = curser.execute(query, params).fetchall()
+        if returnID == True:
+            id = curser.lastrowid
         results = ','.join(rows)
+        con.commit()
     except BaseException as e:
         logging.error('an error occured while running query')
+        logging.error(f'query is {query}. params are: {", ".join(params)}')
         logging.error(str(e))
     finally:
         con.close()
-        return results
+        if returnID == True:
+            return results, id
+        else:
+            return results, None
 
 def Initilize_Database():
     #check if db already exists:

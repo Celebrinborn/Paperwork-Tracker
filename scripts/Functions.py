@@ -25,12 +25,14 @@ def Create_Box(PhysicalLocation):
     qrcode = None
     query = f"insert into Boxes (FriendlyName, DateCreated, DateClosed, IsOpen, QRCode, PhysicalLocation) values (?, ?, ?, ?, ?, ?);"
     params = (name, datetime.datetime.now(), datetime.datetime.max, True, qrcode, PhysicalLocation)
-    Query(query, params)
-    logging.info(f'created box with name {name}')
-    return name
+    logging.info(f"sending query {query} with params {params}")
+    _, id = Query(query, params, True)
+    logging.info(f'created box with name {name} and id {id}')
+    
+    return name, id, qrcode
 
 
-def Create_Document():
+def Create_Documents():
     pass
 
 def Get_Boxes():
